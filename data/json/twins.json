@@ -1,0 +1,148 @@
+{
+  "pedigree": {
+    "title": "Example Pedigree",
+
+    "members": {
+      "1": {
+        "gender": 2,
+        "Test3": true
+      },
+      "2": {
+        "gender": 1,
+        "Test1": true,
+        "Test2": true,
+        "Test3": true
+      },
+      "3": {
+        "gender": 1,
+        "Test1": true
+      },
+      "4": {
+        "gender": 2
+      },
+      "5": {
+        "gender": 2
+      },
+      "6": {
+        "gender": 2
+      },
+      "7": {
+        "gender": 2
+      },
+      "8": {
+        "gender": 0,
+        "Test1": true,
+        "Test2": true
+      },
+      "9": {
+        "gender": 1
+      },
+      "10": {
+        "gender": 1
+      },
+      "11": {
+        "gender": 0
+      },
+      "12": {
+        "gender": 2,
+        "Test3": true
+      },
+      "13": {
+        "gender": 2
+      },
+      "14": {
+        "gender": 2,
+        "Test2": true
+      },
+      "15": {
+        "gender": 2
+      },
+      "16": {
+        "gender": 1
+      },
+      "17": {
+        "gender": 1,
+        "Test2": true,
+        "Test3": true
+      },
+      "18": {
+        "gender": 1,
+        "Test1": true,
+        "Test3": true
+      }
+    },
+    "nests": {
+      "2,1": {
+        "pregnancies": [
+          {
+            "children": ["3", "4"],
+            "zygotes": [0, 1]
+          },
+          {
+            "children": ["5", "6"],
+            "zygotes": [0, 0]
+          },
+          {
+            "children": ["7", "8"]
+          }
+        ]
+      },
+      "6,9": {
+        "pregnancies": [
+          {
+            "children": ["10", "11", "12"],
+            "zygotes": [0, 1, 1]
+          },
+          {
+            "children": ["13", "14", "15"],
+            "zygotes": [0, 0, 0]
+          },
+          {
+            "children": ["16", "17", "18"]
+          }
+        ]
+      }
+    }
+  },
+
+  "symbol": {
+    "scheme": 3,
+    "mapping": ["Test1", "Test2", "Test3"],
+    "color": ["indigo", "gold", "cyan"],
+    "pattern": ["horizontal", "dotted", "solid"]
+  },
+
+  "schemaExtension": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "pedigree": {
+        "properties": {
+        }
+      },
+      "member": {
+        "properties": {
+          "Test1": {
+            "title": "Test1",
+            "type": "boolean"
+          },
+          "Test2": {
+            "title": "Test2",
+            "type": "boolean"
+          },
+          "Test3": {
+            "title": "Test3",
+            "type": "boolean"
+          }
+        }
+      },
+      "nest": {
+        "properties": {
+        }
+      },
+      "pregnancy": {
+        "properties": {
+        }
+      }
+    }
+  }
+}

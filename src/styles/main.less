@@ -1,0 +1,61 @@
+@import "~bootstrap/less/bootstrap";
+@import "~react-fa/node_modules/font-awesome/less/font-awesome";
+
+
+/* No round borders. */
+@border-radius-base:  0;
+@border-radius-large: 0;
+@border-radius-small: 0;
+
+
+html, body, #content, #content > div {
+  height: 100%;
+}
+
+
+#nested-editor, iframe {
+  border: none;
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+  margin: 0 auto 0;
+  padding: 0;
+  position: fixed;
+}
+
+
+.panel {
+  margin: 5px 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding-bottom: 0;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .file-input {
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      outline: none;
+      background: white;
+      cursor: inherit;
+      display: block;
+    }
+  }
+}
