@@ -36,11 +36,7 @@ module.exports = {
 
     loaders: [{
       test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader?stage=1&optional=runtime'
-    }, {
-      test: /\.jsx?$/,
-      exclude: /node_modules\/[^n]/,
+      exclude: /node_modules(?!\/nested-editor)/,
       loader: 'babel-loader?stage=1&optional=runtime'
     }, {
       test: /\.css$/,
