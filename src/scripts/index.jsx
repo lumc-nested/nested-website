@@ -1,5 +1,5 @@
 var React = require('react');
-var Example = require('./Example');
+var Website = require('./Website');
 
 
 require('babel-core/polyfill');
@@ -12,7 +12,7 @@ require('../styles/main.less');
 (window !== window.top ? window.top : window).React = React;
 
 
-React.render(<Example />, document.getElementById('content'));
+React.render(<Website />, document.getElementById('content'));
 
 
 module.exports = {};

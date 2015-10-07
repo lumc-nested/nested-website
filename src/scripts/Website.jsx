@@ -87,7 +87,7 @@ var ResizeMixin = {
 };
 
 
-var Example = React.createClass({
+var Website = React.createClass({
   mixins: [ResizeMixin],
 
   openJson: function(event) {
@@ -201,4 +201,4 @@ var Example = React.createClass({
 });
 
 
-module.exports = Example;
+module.exports = Website;
