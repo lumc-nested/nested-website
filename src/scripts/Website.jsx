@@ -7,35 +7,17 @@ var TransitionEvents = require('react/lib/ReactTransitionEvents');
 var Nested = require('nested-editor');
 
 
-var examples = {
-  json: [
-    ['Example', require('!raw!../../data/json/example.json')],
-    ['Simple family', require('!raw!../../data/json/simpleFamily.json')],
-    ['Twins', require('!raw!../../data/json/twins.json')],
-    ['Two roots', require('!raw!../../data/json/twoRoots.json')],
-    ['Complex', require('!raw!../../data/json/complex.json')]
-  ],
-  ped: [
-    ['Example', require('!raw!../../data/ped/example.ped')],
-    ['SI 003', require('!raw!../../data/ped/si_003.ped')],
-    ['SI 004', require('!raw!../../data/ped/si_004.ped')]
-  ],
-  fam: [
-    ['Example', require('!binary!../../data/fam/example.fam')],
-    ['Simple', require('!binary!../../data/fam/simple.fam')],
-    ['Twins', require('!binary!../../data/fam/twins.fam')]
-  ],
-  xlsx: [
-    ['XLSX (Excel 2007+)', require('!binary!../../data/spreadsheet/example.xlsx')],
-    ['ODS (OpenDocument)', require('!binary!../../data/spreadsheet/example.ods')]
-  ]
-};
-
-
-var Col = ReactBootstrap.Col;
-var Grid = ReactBootstrap.Grid;
 var Panel = ReactBootstrap.Panel;
-var Row = ReactBootstrap.Row;
+
+
+// Filetypes we support for opening, by extension.
+var filetypes = {
+  json: {binary: false, type: 'json'},
+  ped: {binary: false, type: 'ped'},
+  fam: {binary: true, type: 'fam'},
+  xlsx: {binary: true, type: 'xlsx'},
+  ods: {binary: true, type: 'xlsx'}
+};
 
 
 var FileInput = React.createClass({
@@ -44,7 +26,7 @@ var FileInput = React.createClass({
 
     return (
       <a className="file-input" href="#">
-        Browse ... <input type="file" accept={accept} onChange={this.props.onChange} />
+        {this.props.caption} <input type="file" accept={accept} onChange={this.props.onChange} />
       </a>
     );
   }
@@ -90,24 +72,9 @@ var ResizeMixin = {
 var Website = React.createClass({
   mixins: [ResizeMixin],
 
-  openJson: function(event) {
-    this.openFile(event, 'json');
-  },
-
-  openPed: function(event) {
-    this.openFile(event, 'ped');
-  },
-
-  openFam: function(event) {
-    this.openFile(event, 'fam', true);
-  },
-
-  openSpreadsheet: function(event) {
-    this.openFile(event, 'xlsx', true);
-  },
-
-  openFile: function(event, filetype, binary) {
+  openFile: function(event) {
     var file = event.target.files[0];
+    var filetype = filetypes[file.name.split('.').reverse()[0]];
     var reader = new FileReader();
 
     // Clear input element so we are called again even when re-opening the
@@ -115,11 +82,11 @@ var Website = React.createClass({
     event.target.value = null;
 
     reader.onload = (e) => {
-      this.refs.editor.openDocument(e.target.result, filetype);
+      this.refs.editor.openDocument(e.target.result, filetype.type);
     };
 
     if (file) {
-      if (binary) {
+      if (filetype.binary) {
         reader.readAsBinaryString(file);
       } else {
         reader.readAsText(file);
@@ -147,53 +114,14 @@ var Website = React.createClass({
       bottom: this.state.size + 15
     };
 
-    var links = (filetype) => examples[filetype].map(([name, data]) => {
-      var onClick = () => this.refs.editor.openDocument(data, filetype);
-      return <li key={name}><a onClick={onClick} href="#">{name}</a></li>;
-    });
-
-    var panelProps = {
-      header: <h3>Example pedigrees</h3>,
-      collapsable: true,
-      defaultExpanded: true
-    };
-
     return (
       <div>
         <Nested ref="editor" style={editorStyle} />
-        <Panel ref="panel" bsStyle="primary" {...panelProps}>
-          <Grid>
-            <Row>
-              <Col md={3}>
-                <p>Nested</p>
-                <ul>
-                  {links('json')}
-                  <li><FileInput extensions={['json']} onChange={this.openJson} /></li>
-                </ul>
-              </Col>
-              <Col md={3}>
-                <p>PED format</p>
-                <ul>
-                  {links('ped')}
-                  <li><FileInput extensions={['ped']} onChange={this.openPed} /></li>
-                </ul>
-              </Col>
-              <Col md={3}>
-                <p>FAM format</p>
-                <ul>
-                  {links('fam')}
-                  <li><FileInput extensions={['fam']} onChange={this.openFam} /></li>
-                </ul>
-              </Col>
-              <Col md={3}>
-                <p>Spreadsheets</p>
-                <ul>
-                  {links('xlsx')}
-                  <li><FileInput extensions={['xlsx', 'ods']} onChange={this.openSpreadsheet} /></li>
-                </ul>
-              </Col>
-            </Row>
-          </Grid>
+        <Panel ref="panel" bsStyle="primary">
+          <FileInput
+              extensions={Object.keys(filetypes)}
+              onChange={this.openFile}
+              caption="Click here to open a pedigree file ..." />
         </Panel>
       </div>
     );
