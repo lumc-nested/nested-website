@@ -2,6 +2,7 @@
   "name": "nested-website",
   "version": "0.0.1",
   "description": "Pedigree editor",
+  "license": "MIT",
   "main": "src/scripts/index.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --colors --port 8000 --config webpack.dev.config.js",
