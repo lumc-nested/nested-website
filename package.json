@@ -5,9 +5,9 @@
   "license": "MIT",
   "main": "src/scripts/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --progress --colors --port 8000 --config webpack.dev.config.js",
+    "dev": "webpack-dev-server --progress --colors --port 8000 --config webpack.config.js",
     "clean": "rm -Rf dist",
-    "dist": "npm run clean && webpack -p --config webpack.dist.config.js"
+    "dist": "npm run clean && webpack -p --config webpack.config.js --bail"
   },
   "repository": {
     "type": "git",
