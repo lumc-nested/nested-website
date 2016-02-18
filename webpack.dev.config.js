@@ -13,16 +13,15 @@ module.exports = {
 
   entry: [
     'webpack/hot/only-dev-server',
-    './src/scripts/index.jsx'
+    './scripts/init.jsx'
   ],
 
   output: {
     filename: 'main.js',
-    publicPath: '/assets/'
+    publicPath: '/dist/'
   },
 
   devServer: {
-    contentBase: './dev',
     hot: true
   },
 

@@ -13,11 +13,11 @@ module.exports = {
     new webpack.optimize.AggressiveMergingPlugin()
   ],
 
-  entry: './src/scripts/index.jsx',
+  entry: './scripts/init.jsx',
 
   output: {
-    filename: 'nested-website.min.js',
-    path: 'dist/assets/'
+    filename: 'main.js',
+    path: 'dist/'
   },
 
   resolve: {
