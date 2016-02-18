@@ -3,6 +3,7 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 // Detect if we're running webpack dev server or building a distribution.
@@ -11,7 +12,8 @@ var devServer = path.basename(require.main.filename) === 'webpack-dev-server.js'
 
 var config = {
   plugins: [
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new ExtractTextPlugin('styles.css')
   ],
 
   entry: './scripts/init.jsx',
@@ -41,10 +43,10 @@ var config = {
       loader: 'babel-loader?stage=1&optional=runtime'
     }, {
       test: /\.css$/,
-      loader: 'style-loader!css-loader'
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
     }, {
       test: /\.less$/,
-      loader: 'style-loader!css-loader!less-loader'
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
     }, {
       test: /\.(png|jpg)$/,
       loader: 'url-loader?limit=8192'
