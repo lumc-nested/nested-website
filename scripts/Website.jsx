@@ -1,8 +1,6 @@
 var EventListener = require('react-bootstrap/lib/utils/EventListener');
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
-// TODO: All of react/lib/* is considered private.
-var TransitionEvents = require('react/lib/ReactTransitionEvents');
 
 var Nested = require('nested-editor');
 
@@ -99,14 +97,6 @@ var Website = React.createClass({
       document.defaultView.getComputedStyle(React.findDOMNode(this.refs.panel), null).height,
       10
     );
-  },
-
-  componentDidMount: function() {
-    TransitionEvents.addEndEventListener(this.refs.panel.getCollapsableDOMNode(), this.resize);
-  },
-
-  componentWillUnmount: function() {
-    TransitionEvents.removeEndEventListener(this.refs.panel.getCollapsableDOMNode(), this.resize);
   },
 
   render: function() {
