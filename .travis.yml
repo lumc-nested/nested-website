@@ -8,7 +8,8 @@ deploy:
   provider: releases
   api_key:
     secure: SaJNRVVOb8c7DIFnDxay7FPWNqKTIeRIS9bcG7pAuM82WZ1pCLCtTZukemnyLI3EEaeolkTUOAKjEcSxfFfxAT/GvdO8vEKLle0UifbhCA6+wSqxPSg5AvCzBI/EJNwGC+vov8JIe6KZhenI6bfpfKWV6MC5d7FupRFQmquzZ/z51JO0hscO5NNjrxrE5hLrYSGrC6PCqDMpjgBJ+7uaztkp3qJnV3LOlq2IVJk08cqgIG7wv4ZnfUW/U2+2T+cZF0a2lZVTP9qDfiooPyE/d159A1X1AwzAriadFurcl0IEiLt22Oq2yO4rOkK51iLLteR5rJsutICMItFueFRpyHXSAHi56OhuK1H35dC9dNbbpiSMFo17UqmQBDx3kBbTd70Q0YKmoWwmMeY7b48xwSEfVA0KefNI7sp5tx4csnecWrg3Au8urkNvUcQaNAtdpXidDghpmbNAuAKuMCE1emdA2Mx/XDIprWoyB38skeeNXXFIEIybNpWNX5DJs5Op2hPfR5thh+MffYy7vjMcNI7w9j0O2J3QtROSroKmiGbsjCooiTJJQ9D2htyPcLr/4e5MY+N3mmo6TE86Qwrm/d9tOX+TpdbKfM6AyG7t3zQsDIkOw5XotNiS7q8nriy1NfK4/3tz1wdohGwk3hJgALeNDHuVelhRa1gn4lGl3z4=
-  file: dist.tar.gz
+  file: "dist.tar.gz dist/*"
+  file_glob: true
   skip_cleanup: true
   on:
     tags: true
