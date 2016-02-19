@@ -7,19 +7,27 @@ Online pedigree editor.
 Development
 -----------
 
-To get started, first install all dependencies:
+First install [Node.js](https://nodejs.org/). Then install package
+dependencies with NPM:
 
     npm install
 
-Build the website:
-
-    npm run dist
-
-The result can be found in `dist/`.
-
-During development you can serve the website with webpack-dev-server:
+A live-reloading development webserver serves the compiled application when
+running:
 
     npm run dev
 
-Point your browser to http://localhost:8000/webpack-dev-server/ and code
-changes will hot reload.
+
+Deployment
+----------
+
+To compile the application to a bundle that can be served by any webserver,
+install the package dependencies as above and run:
+
+    npm run dist
+
+The bundle and accompanying files can now be found in the `dist`
+subdirectory.
+
+Alternatively, pre-compiled bundles can be found from the
+[GitHub releases page](https://github.com/lumc-nested/nested-website/releases).
