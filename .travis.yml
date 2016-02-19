@@ -1,0 +1,5 @@
+# Validate this file using http://lint.travis-ci.org/
+language: node_js
+node_js: stable
+sudo: false
+script: npm run dist
