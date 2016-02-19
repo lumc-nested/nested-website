@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Pedigree editor",
   "license": "MIT",
-  "main": "src/scripts/index.js",
+  "main": "scripts/init.jsx",
   "scripts": {
     "dev": "webpack-dev-server --progress --colors --port 8000 --config webpack.config.js",
     "clean": "rm -Rf dist",
