@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react');
 var Website = require('./Website');
 
 
@@ -12,7 +13,7 @@ require('../styles/main.less');
 (window !== window.top ? window.top : window).React = React;
 
 
-React.render(<Website />, document.getElementById('content'));
+ReactDOM.render(<Website />, document.getElementById('content'));
 
 
 module.exports = {};

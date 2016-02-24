@@ -1,5 +1,6 @@
 var EventListener = require('react-bootstrap/lib/utils/EventListener');
 var React = require('react');
+var ReactDOM = require('react-dom');
 var ReactBootstrap = require('react-bootstrap');
 
 var Nested = require('nested-editor');
@@ -94,7 +95,7 @@ var Website = React.createClass({
 
   getSize: function() {
     return parseInt(
-      document.defaultView.getComputedStyle(React.findDOMNode(this.refs.panel), null).height,
+      document.defaultView.getComputedStyle(ReactDOM.findDOMNode(this.refs.panel), null).height,
       10
     );
   },
