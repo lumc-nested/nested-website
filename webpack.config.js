@@ -50,7 +50,9 @@ var config = {
       loader: ExtractTextPlugin.extract('style', 'css')
     }, {
       test: /\.less$/,
-      loader: ExtractTextPlugin.extract('style', ['css', 'less'])
+      // The mergeRules transformation breaks our zoom slider thumb.
+      // https://github.com/ben-eb/postcss-merge-rules/issues/18
+      loader: ExtractTextPlugin.extract('style', ['css?-mergeRules', 'less'])
     }, {
       test: /\.(png|jpg)$/,
       loader: 'url?limit=8192'
