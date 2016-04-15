@@ -15,7 +15,9 @@ var filetypes = {
   ped: {binary: false, type: 'ped'},
   fam: {binary: true, type: 'fam'},
   xlsx: {binary: true, type: 'xlsx'},
-  ods: {binary: true, type: 'xlsx'}
+  ods: {binary: true, type: 'xlsx'},
+  csv: {binary: false, type: 'csv'},
+  tsv: {binary: false, type: 'csv'}
 };
 
 
