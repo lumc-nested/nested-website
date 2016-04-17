@@ -31,3 +31,21 @@ subdirectory.
 
 Alternatively, pre-compiled bundles can be found from the
 [GitHub releases page](https://github.com/lumc-nested/nested-website/releases).
+
+
+Dependency management
+---------------------
+
+In order to have somewhat reproducible builds, we use
+[npm shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) to lock down all
+dependencies. To add or update a dependency, run:
+
+    npm install --save --save-exact some-dependency@some-version
+
+Or, if it's a dev dependency:
+
+    npm install --save-dev --save-exact some-dev-dependency@some-version
+
+Then update the shrinkwrap:
+
+    npm shrinkwrap --dev
