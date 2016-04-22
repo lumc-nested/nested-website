@@ -3,6 +3,8 @@ Nested
 
 Online pedigree editor.
 
+Actual rendering is done by [Madeline 2.0 PDE](http://madeline.med.umich.edu/).
+
 
 Development
 -----------
